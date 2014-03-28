@@ -89,6 +89,10 @@
     NSArray *keys = [dictionary allKeys];
     for (NSString *key in keys) {
         id value = [dictionary valueForKey:key];
+        if (value == [NSNull null]) {
+            continue;
+        }
+        
         DCDynamicAttribute *dynamicAttribute = [self.propertyFinder findAttributeForKey:key
                                                                                 onClass:self.classToGenerate];
         if(dynamicAttribute){
